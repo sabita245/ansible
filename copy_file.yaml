@@ -1,0 +1,12 @@
+---
+ - name: This playbook is to copy a file
+   hosts: webservers
+   vars:
+           myfile: a
+
+   tasks:
+           - name: to copy a file "{{ my_file }}"
+             copy:
+                     src: "/etc/ansible/hello_ansible/{{ myfile }}"
+                     dest: "/opt/{{ myfile }}"
+

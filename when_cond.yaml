@@ -1,0 +1,16 @@
+---
+ - name: This playbook is to leverage the gathering facts
+   hosts: webservers
+   gather_facts: true
+   tasks:
+           - name: to restart the service if its 64 bits
+             service:
+                     name: sshd
+                     state: restarted
+             when: ansible_architecture == 'x86_64'
+           - name: to check a file existance
+             file:
+                     path: /opt/file1.txt
+                     state: file
+                      
+             when: ansible_architecture == 'x86_64'

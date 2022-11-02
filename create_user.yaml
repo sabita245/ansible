@@ -1,0 +1,12 @@
+---
+ - name: This playbook is to create an user
+   hosts: webservers
+
+   tasks:
+           - name: This task will create an user named as jenkins
+             user:
+                     name: jenkins
+                     uid: 4000
+                     groups: root
+                     shell: /bin/bash
+                     state: absent

@@ -1,0 +1,36 @@
+---
+ - name: This playbook is to leveraging register module
+   hosts: webservers
+   gather_facts: True
+
+   tasks:
+           - name: To capture a data and display as a variable
+             package:
+                     name: tree
+                     state: absent
+             register: capture_data
+             tags:
+                     - install
+           - name: To print the data
+             debug:
+                     var: capture_data
+             tags:
+                     - install
+           - name: to print the rc value
+             debug:
+                     var: capture_data.rc
+           - name: To use shell module
+             command: mkdir -p /opt/command
+             args:
+                     chdir: /opt
+             register: capture_data
+           - name: print the data
+             debug:
+                     var: capture_data
+             
+           - name: to check wheather my module run sucessfully
+             file:
+                     path: /opt/file1.txt
+                     state: file
+             when: capture_data.rc == 0
+             

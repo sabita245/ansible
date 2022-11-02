@@ -1,0 +1,10 @@
+---
+ - name: This playbook to install vim package
+   hosts: webservers
+   vars_files:
+           - myvariables.yaml
+   tasks:
+           - name: to install vim in remote machine
+             apt:
+                     name: "{{ mysoftware }}"
+                     state: present

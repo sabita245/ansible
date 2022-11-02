@@ -1,0 +1,12 @@
+---
+ - name: This playbook is to check the file presence
+   hosts: webservers
+   vars:
+           myfile: ["/opt/file1.txt","/opt/file2.txt"]
+   tasks:
+           - name: to check the files
+             file:
+                     path: "{{ item }}"
+                     state: file
+                     mode: 0600
+             loop: "{{ myfile }}"

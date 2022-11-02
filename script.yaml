@@ -1,0 +1,12 @@
+---
+ - name: This playbook is to create a cron job
+   hosts: webservers
+   tasks:
+           - name: to run a script at runtime
+             cron:
+                     name: "log.rotation"
+                     hour: "01"
+                     minute: "15"
+                     job: "/etc/ansible/hello_ansible/{{ script }}"
+                     state: present
+

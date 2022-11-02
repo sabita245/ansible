@@ -1,0 +1,9 @@
+---
+ - name: This playbook will run the command in remote server
+   hosts: webservers
+   tasks:
+          
+           - name: to redirect the contents of hosts info in remote machine
+             shell: cat /etc/ansible/hosts >ipaddress.txt
+             args:
+                     chdir: /opt

@@ -1,0 +1,14 @@
+---
+ - name: This playbook is to create multiple files
+   hosts: webservers
+   tasks:
+           - name: this will create multiple files
+             file:
+                     path: "/opt/{{ item }}"
+                     state: touch
+                     owner: root
+                     group: root
+             loop:
+                     - file1.txt
+                     - file2.txt
+                     - file3.txt

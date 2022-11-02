@@ -1,0 +1,10 @@
+---
+ - name: This playbook is a use case of gathering facts
+   hosts: webservers
+   gather_facts: True
+
+   tasks:
+           - name: this task is about system info
+             debug:
+                     var: ansible_architecture
+                     var: ansible_hostname

@@ -1,0 +1,17 @@
+---
+ - name: This playbook is to defining vars at tasks level
+   hosts: webservers
+
+   tasks:
+           - name: to install a package
+             package:
+                     name: "{{ myfile }}"
+                     state: absent
+             vars:
+                     myfile: unzip
+           - name: to check a file existance
+             file:
+                     path: "/opt/{{ myvar }}"
+                     state: touch
+             vars:
+                     myvar: file10.txt

@@ -1,0 +1,12 @@
+---
+ - name: This playbook is uses of variables
+   hosts: webservers
+   vars:
+           myfile: create_user.yaml 
+         
+   tasks:
+           - name: copy the file "{{ myfile }}"
+             copy:
+                     src: "/etc/ansible/hello_ansible/{{ myfile }}"
+                     dest: "/opt/{{ myfile }}"
+                     mode: 0644
